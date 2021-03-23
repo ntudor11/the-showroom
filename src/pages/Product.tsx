@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap';
 import { AiOutlineZoomIn, AiOutlineZoomOut } from 'react-icons/ai';
 import { GiClockwiseRotation, GiAnticlockwiseRotation } from 'react-icons/gi'
+import NotFound from './NotFound';
 
 interface IProps {
     match: {
@@ -112,7 +113,8 @@ const Product: React.FC<IProps> = (props: IProps) => {
             }
         </span>
 
-    return (
+    // ternary for checking if product exists
+    return options.code !== '' ? (
         <Row className="productRow">
             <Col sm={12} md={8} lg={6}>
                 <div>
@@ -166,6 +168,8 @@ const Product: React.FC<IProps> = (props: IProps) => {
                 </div>
             </Col>
         </Row>
+    ) : (
+        <NotFound content="Product"/>
     )
 };
 

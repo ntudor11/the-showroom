@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Product from './pages/Product';
+import NotFound from './pages/NotFound';
 import NavBar from './components/NavBar';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
@@ -32,6 +33,12 @@ const App: React.FC = () => {
                 exact 
                 path="/products"
                 render={() => <Products />}
+              />
+
+              {/* empty route for 404 page */}
+              <Route
+                exact
+                render={() => <NotFound content="Page"/>}
               />
             </Switch>
           </Col>
