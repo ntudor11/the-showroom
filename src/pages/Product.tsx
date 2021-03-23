@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap';
 import { AiOutlineZoomIn, AiOutlineZoomOut } from 'react-icons/ai';
+import { GiClockwiseRotation, GiAnticlockwiseRotation } from 'react-icons/gi'
 
 interface IProps {
     match: {
@@ -144,7 +145,7 @@ const Product: React.FC<IProps> = (props: IProps) => {
                             disabled={crop.x !== 0}
                             onClick={() => rotateImgLeft()}
                         >
-                        Rotate Left
+                            <GiAnticlockwiseRotation />
                         </Button>
                         <Button
                             variant="outline-info"
@@ -152,7 +153,7 @@ const Product: React.FC<IProps> = (props: IProps) => {
                             disabled={crop.x !== 0}
                             onClick={() => rotateImgRight()}
                         >
-                            Rotate Right
+                            <GiClockwiseRotation />
                         </Button>
                     </Col>
                 </Row>
