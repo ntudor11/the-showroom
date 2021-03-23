@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './pages/Home';
+import Products from './pages/Products';
+import Product from './pages/Product';
+import NavBar from './components/NavBar';
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Container fluid className="App">
+        <Row>
+          <Col xs={12}>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <Home /> }
+              />
+
+              <Route
+                exact
+                path="/:client/product/:name"
+                render={(props: any) => <Product {...props} />}
+              />
+
+              <Route
+                exact 
+                path="/products"
+                render={() => <Products />}
+              />
+            </Switch>
+          </Col>
+        </Row>
+      </Container>
+    </Router>
   );
 }
 
